@@ -41,19 +41,19 @@ func sumOfThree(in []int, sum int) (int, int, int) {
 			return l, m, r
 		}
 
-		a := sum - l - m
-		if _, ok := cache[a]; ok {
-			return l, m, a
+		remain := sum - l - m
+		if _, ok := cache[remain]; ok {
+			return l, m, remain
 		}
 
-		b := sum - l - r
-		if _, ok := cache[b]; ok {
-			return l, r, b
+		remain = sum - l - r
+		if _, ok := cache[remain]; ok {
+			return l, r, remain
 		}
 
-		c := sum - m - r
-		if _, ok := cache[c]; ok {
-			return m, r, c
+		remain = sum - m - r
+		if _, ok := cache[remain]; ok {
+			return m, r, remain
 		}
 
 		ll, rr := sumOfTwo(cacheKeys, sum-l)
@@ -93,14 +93,14 @@ func sumOfTwo(in []int, sum int) (int, int) {
 			return l, r
 		}
 
-		a := sum - l
-		if _, ok := cache[a]; ok {
-			return l, a
+		remain := sum - l
+		if _, ok := cache[remain]; ok {
+			return l, remain
 		}
 
-		b := sum - r
-		if _, ok := cache[b]; ok {
-			return b, r
+		remain = sum - r
+		if _, ok := cache[remain]; ok {
+			return remain, r
 		}
 
 		cache[l] = true
